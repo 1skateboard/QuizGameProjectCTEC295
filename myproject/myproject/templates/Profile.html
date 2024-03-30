@@ -21,7 +21,11 @@
     </tbody>
   </table>
   {% if current_user.is_admin == True %}
+<<<<<<< Updated upstream
   <h3 class="text-center" style="padding-top: 2rem; text-decoration: underline;">Active bidder accounts</h3>
+=======
+  <h3 class="text-center" style="padding-top: 2rem; text-decoration: underline;">Leader Board</h3>
+>>>>>>> Stashed changes
   <table class="table table-striped" style="margin-top: 2rem;">
     <thead>
     <tr>
@@ -30,6 +34,10 @@
         <th >Last Name</th>
         <th >Phone Number</th>
         <th >Contact Info</th>
+<<<<<<< Updated upstream
+=======
+        <th >Score</th>
+>>>>>>> Stashed changes
     </tr>
     </thead>
     <tbody>
@@ -39,6 +47,10 @@
             <td>{{user.lastname}}</td>
             <td>{{user.phoneNum}}</td>
             <td>{{user.contactInfo}}</td>
+<<<<<<< Updated upstream
+=======
+            <td>{{user.score}}</td>
+>>>>>>> Stashed changes
             <td><a class="btn btn-warning" href="/PasswordReset/{{user.id}}" role="button">Password Reset</a></td>
         </tr>
         {%endfor%}

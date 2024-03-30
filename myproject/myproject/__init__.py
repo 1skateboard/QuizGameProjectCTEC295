@@ -11,7 +11,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MysecretKey'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.path.join(basedir, 'data.sqlite')
+<<<<<<< Updated upstream
 app.config['SQLALCHEMY_BINDS'] = {'questionDB' : 'sqlite:////'+os.path.join(basedir, 'trivia.db')}
+=======
+>>>>>>> Stashed changes
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

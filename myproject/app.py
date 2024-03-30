@@ -4,6 +4,10 @@ from flask_login import login_user,login_required,logout_user
 from myproject.models import User, Item
 import requests
 import pprint
+<<<<<<< Updated upstream
+=======
+from sqlalchemy import desc
+>>>>>>> Stashed changes
 
 from myproject.forms import LoginForm,RegistrationForm,ItemForm,BidForm
 import datetime 
@@ -34,10 +38,32 @@ def home():
 @login_required
 def Profile():
     item = Item.query.filter_by(highestBidder = session['id'])
+<<<<<<< Updated upstream
     users = User.query.all()
     ##questions = Questions.query.all()
     return render_template('Profile.html',items=item,users=users)
 
+=======
+    users = User.query.order_by(desc(User.score)).all()
+    return render_template('Profile.html',items=item,users=users)
+
+@app.route('/Quiz')
+@login_required
+def Quiz():
+    users = User.query.all()
+    return render_template('QuizPage.html',users=users)
+
+@app.route('/updateScore', methods=['POST'])
+@login_required
+def updateScore():
+    data = request.get_json()
+    newScore = data['score']
+    user = User.query.filter_by(id = session['id']).first()
+    user.score += int(newScore)
+    db.session.commit()
+    return render_template('Profile.html', user=user)
+
+>>>>>>> Stashed changes
 ##Logout Route,logs user out and redirects them to home.html
 @app.route('/logout')
 @login_required
@@ -84,7 +110,12 @@ def register():
                     lastname=form.lastname.data,
                     phoneNum=form.phoneNum.data,
                     contactInfo=form.contactInfo.data,
+<<<<<<< Updated upstream
                     is_admin= form.is_admin.data)
+=======
+                    is_admin= form.is_admin.data,
+                    score=0)
+>>>>>>> Stashed changes
         
         db.session.add(user)
         db.session.commit()
